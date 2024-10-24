@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+# Konnekt Bio-Links App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple, customizable **Bio-Links** app built with **React.js**. The app allows users to display a list of links along with a short description and logo. This project is designed to be easily modifiable and extendable, allowing for the addition of new links and updates to the existing content.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Demo](#demo)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the App](#running-the-app)
+- [How to Use](#how-to-use)
+  - [Modifying Links](#modifying-links)
+  - [Updating Header Content](#updating-header-content)
+- [License](#license)
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A live demo of the app can be found [here](https://konnekt.gr).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Dynamic Links**: Easily configurable links for any resource.
+- **Responsive Design**: Mobile-first design that adapts to different screen sizes.
+- **Customizable Header**: Ability to update the logo, title, and description.
+- **Smooth UI Animations**: Hover effect on buttons for a modern touch.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
 
-### `npm run build`
+```
+.
+├── src
+│   ├── App.js
+│   ├── App.css
+│   ├── AppElements.js
+│   ├── linksData.js
+│   ├── Assets
+│   │   └── konnekt-pink.jpg
+│   └── index.js
+├── public
+│   ├── index.html
+│   └── ...
+├── LICENSE
+├── README.md
+└── package.json
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **`App.js`**: The main app component where the header and the links are rendered dynamically.
+- **`AppElements.js`**: Contains styled components used in the app.
+- **`linksData.js`**: Contains the header and link data that can be easily modified.
+- **`Assets/`**: Contains static assets such as images.
+- **`App.css`**: Global CSS styling for the app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- **Node.js** (>= 14.x)
+- **npm** or **yarn** for package management.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   git clone https://github.com/yourusername/konnekt-linktree-app.git
+   cd konnekt-linktree-app
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install the necessary dependencies:
 
-## Learn More
+   Using npm:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Or using yarn:
 
-### Code Splitting
+   ```bash
+   yarn install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Running the App
 
-### Analyzing the Bundle Size
+To start the development server, run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm start
+```
 
-### Making a Progressive Web App
+Or if using yarn:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+yarn start
+```
 
-### Advanced Configuration
+This will open the app in your default browser at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## How to Use
 
-### Deployment
+### Modifying Links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+All the links in the app are stored in `linksData.js`. Each link object contains the following properties:
 
-### `npm run build` fails to minify
+- **`id`**: A unique identifier for each link.
+- **`buttonTitle`**: The text that appears on the button.
+- **`url`**: The target URL for the link.
+- **`icon`**: Placeholder for an icon (currently not in use).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To modify the links, simply update the `linksData` array in `linksData.js`:
+
+```javascript
+export const linksData = [
+	{
+		id: 1,
+		buttonTitle: "New Button Title",
+		url: "https://new-url.com",
+		icon: "",
+	},
+	// Add more links as needed
+];
+```
+
+### Updating Header Content
+
+The header section (image, title, and description) is defined in `headerData` in the `linksData.js` file. To update the content:
+
+```javascript
+export const headerData = {
+	imageSrc: "./Assets/new-logo.jpg", // Path to new logo image
+	altText: "New alt text",
+	title: "New Title",
+	description: "New description text for the header section.",
+};
+```
+
+- **`imageSrc`**: Path to the logo image.
+- **`altText`**: Alt text for accessibility.
+- **`title`**: The text displayed as the main header.
+- **`description`**: The sub-header text that provides additional information.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
